@@ -22,14 +22,14 @@ Ce projet utilise un changement de variable logarithmique $x =log(S)$ pour amél
 
 ### EDP de Black-Scholes transformée
 
-En posant  $x = \ln(S)$, le prix de l'option $u(x,t)$ satisfait l'EDP suivante :
+En posant  $x = \ln(S)$, le prix de l'option $u(t,x)$ satisfait l'EDP suivante :
 
 $$\frac{\partial u}{\partial t} + \left(r - \frac{1}{2}\sigma^2\right)\frac{\partial u}{\partial x} + \frac{1}{2}\sigma^2 \frac{\partial^2 u}{\partial x^2} - ru = 0$$
 
 ### Conditions aux limites (Dirichlet) et Terminale
 
-- **Condition Terminale ($t=T$)** :
-  $$u(x, T) = \max(e^x - K, 0)$$
+- **Condition Terminale** :
+  $$u(T, x) = \max(e^x - K, 0)$$
 
 - **Bord inférieur ($x \to x_{min}$)** : $u = 0$
 - **Bord supérieur ($x \to x_{max}$)** : $u = e^x - K e^{-r(T-t)}$
