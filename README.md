@@ -8,7 +8,7 @@
 
 Implémentation d'un **schéma aux différences finies (Schéma Explicite)** pour résoudre l'équation aux dérivées partielles (EDP) de Black-Scholes et pricer un Call Européen.
 
-Ce projet utilise un changement de variable logarithmique ($x = \log(S)$) pour améliorer la stabilité numérique et l'efficacité de la discrétisation, résolue sur une grille uniforme de pas $(h, \delta)$.
+Ce projet utilise un changement de variable logarithmique $x =log(S)$ pour améliorer la stabilité numérique et l'efficacité de la discrétisation, résolue sur une grille uniforme de pas $(h, \delta)$.
 
 
 ## 🎯 Objectifs
