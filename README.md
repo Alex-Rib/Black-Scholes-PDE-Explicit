@@ -60,7 +60,7 @@ $$C = \frac{h\sigma^2}{2\delta^2} - \frac{h(r - 0.5\sigma^2)}{2\delta}$$
 
 Pour garantir la stabilité du schéma explicite, la condition suivante doit être respectée :
 
-$$h \le \frac{\delta^2}{\sigma^2}$$
+$$h < \frac{\delta^2}{\sigma^2}$$
 
 Le script vérifie automatiquement cette condition : si elle n'est pas respectée pour un $M$ donné, le calcul est ignoré.
 
@@ -76,7 +76,7 @@ Le script vérifie automatiquement cette condition : si elle n'est pas respecté
 Le script génère les visualisations suivantes :
 
 1. **Convergence du Prix** : Comparaison entre le prix obtenue par schéma et le prix analytique (Black-Scholes) pour différentes finesses de grille ($M$).
-2. **Analyse d'Erreur** : Graphique log-log montrant la décroissance de l'erreur absolue en fonction de $M$, confirmant l'ordre 2 du schéma en espace ($O(\delta^2)$).
+2. **Analyse d'Erreur** : Graphique log-log montrant la décroissance de l'erreur absolue en fonction de $M$, suggérant un comportement proche de l’ordre 2 en espace sur la plage testée.
 
 
 ## 🚀 Utilisation
