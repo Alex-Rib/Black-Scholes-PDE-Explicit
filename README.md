@@ -76,7 +76,7 @@ Le script vérifie automatiquement cette condition : si elle n'est pas respecté
 Le script génère les visualisations suivantes :
 
 1. **Convergence du Prix** : Comparaison entre le prix obtenue par schéma et le prix analytique (Black-Scholes) pour différentes finesses de grille ($M$).
-2. **Analyse d'Erreur** : Graphique log-log montrant la décroissance de l'erreur absolue en fonction de $M$, suggérant un comportement proche de l’ordre 2 en espace sur la plage testée.
+2. **Analyse d'Erreur** : Graphique log-log montrant la décroissance de l'erreur absolue en fonction de $M$.
 
 
 ## 🚀 Utilisation
