@@ -69,7 +69,7 @@ Le script vérifie automatiquement cette condition : si elle n'est pas respecté
 
 - **M** : Nombre de points d'espace (testé de 50 à 2000)
 - **N** : Nombre de pas de temps (180 000)
-- **Intervalle** : Domaine de log-prix à 99% de confiance
+- **Intervalle** : Domaine du log-prix à 99% de confiance
 
 ## 📈 Résultats
 
@@ -81,9 +81,6 @@ Le script génère les visualisations suivantes :
 
 ## 🚀 Utilisation
 
-```bash
-python explicit-scheme-BS.py
-```
 
 Le script affiche :
 - Les valeurs de M pour lesquelles le schéma n'est pas stable
