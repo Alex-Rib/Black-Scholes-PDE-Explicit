@@ -95,14 +95,6 @@ Le script affiche :
 pip install numpy matplotlib scipy
 ```
 
-## 🔍 Structure du Code
-
-- **Vérification de stabilité** : `stabilité_explicite_BS()`
-- **Prix Black-Scholes analytique** : `call_bs()`
-- **Schéma aux différences finies** : `schema_explicite_BS_log()`
-- **Analyse de convergence** : Boucle sur différentes valeurs de M
-- **Visualisations** : Graphiques de convergence et d'erreur
-
 ## 🔜 Perspectives
 
 Ce projet a pour vocation d'être étendu aux méthodes plus avancées :
