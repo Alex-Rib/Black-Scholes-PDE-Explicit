@@ -8,8 +8,6 @@
 
 Implémentation d'un **schéma aux différences finies (Schéma Explicite)** pour résoudre l'équation aux dérivées partielles (EDP) de Black-Scholes et pricer un Call Européen.
 
-Ce projet utilise un changement de variable logarithmique $x =log(S)$ pour améliorer la stabilité numérique et l'efficacité de la discrétisation, résolue sur une grille uniforme de pas $(h, \delta)$.
-
 
 ## 🎯 Objectifs
 
@@ -26,21 +24,21 @@ En posant  $x = \ln(S)$, le prix de l'option $u(t,x)$ satisfait l'EDP suivante :
 
 $$\frac{\partial u}{\partial t} + \left(r - \frac{1}{2}\sigma^2\right)\frac{\partial u}{\partial x} + \frac{1}{2}\sigma^2 \frac{\partial^2 u}{\partial x^2} - ru = 0$$
 
-### Conditions aux limites (Dirichlet) et Terminale
+### Conditions aux bornes (Dirichlet) et Terminale
 
 - **Condition Terminale** :
   $$u(T, x) = \max(e^x - K, 0)$$
 
-- **Bord inférieur ($x \to x_{min}$)** : $u = 0$
-- **Bord supérieur ($x \to x_{max}$)** : $u = e^x - K e^{-r(T-t)}$
+- **Borne inférieur ($x \to x_{min}$)** : $u = 0$
+- **Borne supérieur ($x \to x_{max}$)** : $u = e^x - K e^{-r(T-t)}$
 
 ## 🔧 Méthode Numérique
 
 ### Discrétisation
 
 Nous notons les pas de discrétisation selon les notations du cours :
-- **Pas de temps ($h$)** : $h = T/N$
-- **Pas d'espace ($\delta$)** : $\delta = (x_{max} - x_{min})/M$
+- **Pas de temps** : $h = T/N$
+- **Pas d'espace** : $\delta = (x_{max} - x_{min})/M$
 
 ### Schéma Explicite 
 
@@ -56,7 +54,7 @@ $$B = \frac{h\sigma^2}{2\delta^2} + \frac{h(r - 0.5\sigma^2)}{2\delta}$$
 
 $$C = \frac{h\sigma^2}{2\delta^2} - \frac{h(r - 0.5\sigma^2)}{2\delta}$$
 
-### Condition de stabilité CFL
+### Condition de stabilité 
 
 Pour garantir la stabilité du schéma explicite, la condition suivante doit être respectée :
 
@@ -78,13 +76,6 @@ Le script génère les visualisations suivantes :
 1. **Convergence du Prix** : Comparaison entre le prix obtenue par schéma et le prix analytique (Black-Scholes) pour différentes finesses de grille ($M$).
 2. **Analyse d'Erreur** : Graphique log-log montrant la décroissance de l'erreur absolue en fonction de $M$.
 
-
-## 🚀 Utilisation
-
-
-Le script affiche :
-- Les valeurs de M pour lesquelles le schéma n'est pas stable
-- Deux graphiques de convergence et d'erreur
 
 ## 📚 Prérequis
 
