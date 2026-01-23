@@ -67,8 +67,8 @@ def schema_explicite_BS_log(S0, K, T, r, sigma, M, N,h,delta,delta_values,delta_
 
         # mise à jour des prix
         u_price[:] = u_new[:]
-    # interpolation pour obtenir le prix à S0
-    price = np.interp(np.log(S0), delta_values, u_price) 
+   
+    price = u_price[M//2]  
     
     return price
        
