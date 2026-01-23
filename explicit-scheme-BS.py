@@ -73,56 +73,61 @@ def schema_explicite_BS_log(S0, K, T, r, sigma, M, N,h,delta,delta_values,delta_
     return price
        
 
-################################################################################
-# Calcul des prix pour différentes valeurs de M et vérification de la stabilité
-################################################################################
+def main():
+    ################################################################################
+    # Calcul des prix pour différentes valeurs de M et vérification de la stabilité
+    ################################################################################
 
-M_values = np.array([50,100,800,1000,1200,1400,1600,1800,2000])
-price_explicite = np.zeros(len(M_values))
-erreur_explicite = np.zeros(len(M_values))
-stable = np.zeros(len(M_values), dtype=bool)
-bs_price = call_bs(S0,K,T,r,sigma)
-
-
-for i, m in enumerate(M_values) :
-    delta_m = (delta_max - delta_min) / m
-    delta_values_m = np.linspace (delta_min, delta_max, m+1)
-    stable[i] = stabilite_explicite_BS(sigma, h, delta_m)
-
-    if stable[i] == False :
-        print(f"Stabilité non respectée pour M={m}")
-        price_explicite[i] = np.nan
-        erreur_explicite[i] = np.nan
-    else: 
-        print(f"Stabilité respectée pour M={m}")
-        price_explicite[i] = schema_explicite_BS_log(S0, K, T, r, sigma, m, N,h,delta_m,delta_values_m,delta_max)
-        erreur_explicite[i] = np.abs(price_explicite[i] - bs_price)
+    M_values = np.array([50,100,800,1000,1200,1400,1600,1800,2000])
+    price_explicite = np.zeros(len(M_values))
+    erreur_explicite = np.zeros(len(M_values))
+    stable = np.zeros(len(M_values), dtype=bool)
+    bs_price = call_bs(S0,K,T,r,sigma)
 
 
-##########################
-# affichage des résultats 
-##########################
+    for i, m in enumerate(M_values) :
+        delta_m = (delta_max - delta_min) / m
+        delta_values_m = np.linspace (delta_min, delta_max, m+1)
+        stable[i] = stabilite_explicite_BS(sigma, h, delta_m)
 
-plt.figure(figsize=(12,6))
-plt.plot(M_values, price_explicite, 'o-', label='Prix schéma explicite')
-plt.axhline(y=bs_price, color='red', linestyle='--', label='Prix Black-Scholes fermé')
-plt.xlabel("points d'espace M") 
-plt.ylabel("Prix")
-plt.title("Convergence du schéma explicite vers le prix analytique")
-plt.legend()
-plt.grid()
-plt.gca().ticklabel_format(style='plain', axis='y', useOffset=False)
-plt.tight_layout()
-plt.show()
+        if stable[i] == False :
+            print(f"Stabilité non respectée pour M={m}")
+            price_explicite[i] = np.nan
+            erreur_explicite[i] = np.nan
+        else: 
+            print(f"Stabilité respectée pour M={m}")
+            price_explicite[i] = schema_explicite_BS_log(S0, K, T, r, sigma, m, N,h,delta_m,delta_values_m,delta_max)
+            erreur_explicite[i] = np.abs(price_explicite[i] - bs_price)
 
 
-plt.figure(figsize=(12,6))
-plt.plot(M_values, erreur_explicite, 'o-')
-plt.xlabel("points d'espace M")
-plt.ylabel("Erreur")
-plt.title("évolution de l'erreur du schéma explicite en fonction de M")
-plt.xscale('log')
-plt.yscale('log')
-plt.grid(True, which='both')
-plt.tight_layout()
-plt.show()
+    ##########################
+    # affichage des résultats 
+    ##########################
+
+    plt.figure(figsize=(12,6))
+    plt.plot(M_values, price_explicite, 'o-', label='Prix schéma explicite')
+    plt.axhline(y=bs_price, color='red', linestyle='--', label='Prix Black-Scholes fermé')
+    plt.xlabel("points d'espace M") 
+    plt.ylabel("Prix")
+    plt.title("Convergence du schéma explicite vers le prix analytique")
+    plt.legend()
+    plt.grid()
+    plt.gca().ticklabel_format(style='plain', axis='y', useOffset=False)
+    plt.tight_layout()
+    plt.show()
+
+
+    plt.figure(figsize=(12,6))
+    plt.plot(M_values, erreur_explicite, 'o-')
+    plt.xlabel("points d'espace M")
+    plt.ylabel("Erreur")
+    plt.title("évolution de l'erreur du schéma explicite en fonction de M")
+    plt.xscale('log')
+    plt.yscale('log')
+    plt.grid(True, which='both')
+    plt.tight_layout()
+    plt.show()
+
+
+if __name__ == "__main__":
+    main()
