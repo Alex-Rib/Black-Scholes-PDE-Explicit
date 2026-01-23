@@ -86,7 +86,6 @@ pip install numpy matplotlib scipy
 ## 🔜 Perspectives
 
 Ce projet a pour vocation d'être étendu aux méthodes plus avancées :
-- **Schéma Implicite** : Pour obtenir une stabilité inconditionnelle.
 - **Crank-Nicolson** : Pour améliorer la convergence temporelle (ordre 2 en temps contre ordre 1 pour l'explicite).
 
 
