@@ -91,4 +91,4 @@ Ce projet a pour vocation d'être étendu aux méthodes plus avancées :
 
 ## 👨‍💻 Auteur
 
-Alexandre R. - Master ISIFAR, Université Paris Cité
+Alexandre R. - Université Paris Cité
